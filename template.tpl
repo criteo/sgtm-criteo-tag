@@ -1,34 +1,27 @@
-// Copyright 2019 Google LLC
+___TERMS_OF_SERVICE___
 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+By creating or modifying this file you agree to Google Tag Manager's Community
+Template Gallery Developer Terms of Service available at
+https://developers.google.com/tag-manager/gallery-tos (or such other URL as
+Google may provide), as modified from time to time.
 
-//     https://www.apache.org/licenses/LICENSE-2.0
-
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 ___INFO___
 
 {
-  "displayName": "Example Template",
-  "description": "This is an example template. For more information, visit https://developers.google.com/tag-manager/templates",
-  "categories": ["AFFILIATE_MARKETING", "ADVERTISING"],
-  "securityGroups": [],
-  "id": "cvt_temp_public_id",
   "type": "TAG",
+  "id": "cvt_temp_public_id",
   "version": 1,
+  "securityGroups": [],
+  "displayName": "Criteo Tag",
   "brand": {
-    "thumbnail": "",
+    "id": "brand_dummy",
     "displayName": "",
-    "id": "brand_dummy"
+    "thumbnail": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAABACAYAAABLAmSPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVpSURBVGhD7Zt5bBVVGMXHfYkLATUaTXCJYlwSjTH+gTFqTIxb0EoqYEujDWURFxTTIJaoFCUiW0AFlEYU0VirAtKANlVLBBEEFaoggimyVBbLXmjrHOe799b3XuebeXe29r7gLzlpCI9z7+nMu+uHhWOE/4MmSvNBYP9uoHETcGAP0HpU/UVyJBfUtoGtvwI1s2G/ORgYcwdQcgmQdwLsPpZL6HsKMOxKYHwe7PdGAd8vAA7vV2bRiTdoWwuwejHs6cXAwHPZQEGEvBOBUTcDC6fINyAC8QT9ezvseWVA0Xlsh+MQPXH7tYeAjStVo8GIFrRpB+w3SpxOnMx2Lgnh/uOAl/sAf/yoOqFHuKA0eFSWA/3OYDvTGRLf9dlPyYFNg+BBG9YCI65jG+8KiQFu3deqc94EC7pkpvOanso22JUSg9b8SaqTPHpB/2mDXfE024hRmlwgR36G7EHbWmFPyOeNDZQYqFqOqM6n8A9KT3LSANbQZGHs3aLv6fgGtWc+xhrlgvBDtUoh8Q5aU8Ea5ILw4Ely+ZkGH5QmYwNHVx2h35nAqs9VkBTuoM7gg2duYE3iEgp7AMOvAp6/FRh5IzD4UuCB49nPBhFKLpbzPIM76KcTWJMoQvGFzg5miPxNHz2sGupAazNQX+esmcc4u5grWB8/obQ3sG+nMnOTGZT2hv3PYo3CCMUXAYtneM5tvvxUA5Tdxvq6NLWInVLSyQhqzx3NG4XROyPlU4rK8irgkQvYNuh1R9V49UF/UkEP7RVfZM4wiJB/OlA3T5nGxN6/xMY9ox1nQ4EVn6kPZCcV1FnHphuFEW3XsPYrZRgzzo7JnvaobGfIZRG2ac/e5Op4UOHLt5VZgtDTpZkhIDJo42a244FEo6rByKBfzOI7ryk6QhHfcYMRQaPuTlD1ijAzGflEB/VkA+hIDEART+g6AwtHDkVafmHsPcrKbCxsXsMG0BXmT1RWZmNh5UI2gK7wc62yMhuLVjFcAF1hZ4OyMhsr6orI9GmlHQvVr7MBdIXmA8rKbCzUzmED6IquJXIBC8s/YQPoCr+tUFZmY4ldPRNAV3T/mQtYtBvgAmhr6kBlZTbOI3Eo7MGH0BAKumc9xjABGbTsdjaErmI/UUgAGbSynA2gKzx5resKwDRk0A3fsQGCCIumCStTkUHpadDZKxNAV8g/zeipRgZ1sOc+xwYIIhSdn+zat3q6OPpE+b2+h9Uc/wXFjt9FIQQXIIgw9HJgS70yjYm2FthvPZ7ZDl3pe1w/cKSCEq/2zTALK3HRQwfPcbB1vecJJd0qYNUi9UF/MoPSbyiGy552iVds02plHhCqXaoYkbW0h6pTsGCy+kfeZAZ1sKcUsoZhJeqCxt0n7luzbgBoy0drbyqcogIqxs9TVO/kc8fjCop9u2Ipb+MkQtOcS1+RGUNhv1sqftKf8cQ1nnWCuqKFj7goY3AHJZZ+wBrlgsRguG2DCpKCD+pAFZmcUS4IhecAe7apJBLPoKIMrrQ3a5QLwrKPVRCJd1CCJmXnu8MZmSxRKtDhLMs/KCHCXs0amigM6wXs/lN1PkX2oARd1eXAa0zFmGhqVJ3ORC8o4Wyu6TSBa8AITewPcb3igX7QdmrnAAPO5hvrAlE9VKiVkRa7tojVDtdwZwqjb2HnTI5wQduhe5eEi684iVGV3iz6nxiaRAtKUGNrlgAv3RXLNs9PVGgliqND1C1FD5rO9o1A5Thn9Lue7WgY4eFusmCqvi7QE+xIvEHTobnsm/dhzxou6/0KurNB0iUW/YN6Ai/eCXz4ArB+WWyHbskF5TjYJOuDflkqX/dvP5I/KVDDukQvrDo3aBdyjAQF/gW2zQ/g7XwYVgAAAABJRU5ErkJggg\u003d\u003d"
   },
+  "description": "SGTM Criteo Tag",
   "containerContexts": [
-    "WEB"
+    "SERVER"
   ]
 }
 
@@ -37,45 +30,47 @@ ___TEMPLATE_PARAMETERS___
 
 [
   {
-    "help": "Enter an example measurement ID. The value can be any character. This is only an example.",
-    "displayName": "Example Measurement ID",
-    "defaultValue": "foobarbaz1234",
-    "name": "MeasurementID",
-    "type": "TEXT"
+    "type": "TEXT",
+    "name": "MappingId",
+    "displayName": "",
+    "simpleValueType": true
   }
 ]
 
 
-___WEB_PERMISSIONS___
+___SANDBOXED_JS_FOR_SERVER___
+
+const sendHttpRequest = require('sendHttpRequest');
+const getAllEventData = require('getAllEventData');
+const JSON = require('JSON');
+
+const postHeaders = {'Content-Type': 'application/json'};
+const urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=' + data.mappingId;
+
+let postBodyData = getAllEventData();
+const postBody = JSON.stringify(postBodyData);
+
+sendHttpRequest(urlToCall, (statusCode, headers, body) => {
+  if (statusCode >= 200 && statusCode < 300) {
+    data.gtmOnSuccess();
+  } else {
+    data.gtmOnFailure();
+  }
+}, {headers: postHeaders, method: 'POST', timeout: 3000}, postBody);
+
+
+___SERVER_PERMISSIONS___
 
 [
   {
     "instance": {
       "key": {
-        "publicId": "logging",
+        "publicId": "read_event_data",
         "versionId": "1"
       },
       "param": [
         {
-          "key": "environments",
-          "value": {
-            "type": 1,
-            "string": "debug"
-          }
-        }
-      ]
-    },
-    "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
-        "publicId": "get_referrer",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "urlParts",
+          "key": "eventDataAccess",
           "value": {
             "type": 1,
             "string": "any"
@@ -83,28 +78,43 @@ ___WEB_PERMISSIONS___
         }
       ]
     },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "send_http",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "allowedUrls",
+          "value": {
+            "type": 1,
+            "string": "any"
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
     "isRequired": true
   }
 ]
 
 
-___SANDBOXED_JS_FOR_WEB_TEMPLATE___
+___TESTS___
 
-// Enter your template code here.
-const queryPermission = require('queryPermission');
-const getReferrerUrl = require('getReferrerUrl');
-let referrer;
-if (queryPermission('get_referrer', 'query')) {
-  referrer = getReferrerUrl('queryParams');
-}
-
-var log = require('logToConsole');
-log('data =', data);
-
-// Call data.gtmOnSuccess when the tag is finished.
-data.gtmOnSuccess();
+scenarios: []
+setup: ''
 
 
 ___NOTES___
 
-Created on 9/2/2019, 1:02:37 PM
+Created on 8/18/2021, 2:56:49 PM
+
+
