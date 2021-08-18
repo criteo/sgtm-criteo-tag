@@ -31,8 +31,8 @@ ___TEMPLATE_PARAMETERS___
 [
   {
     "type": "TEXT",
-    "name": "mappingId",
-    "displayName": "MappingId",
+    "name": "applicationId",
+    "displayName": "ApplicationId",
     "simpleValueType": true
   }
 ]
@@ -42,10 +42,13 @@ ___SANDBOXED_JS_FOR_SERVER___
 
 const sendHttpRequest = require('sendHttpRequest');
 const getAllEventData = require('getAllEventData');
+const getEventData = require('getEventData');
+
 const JSON = require('JSON');
 
 const postHeaders = {'Content-Type': 'application/json'};
-const urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=' + data.mappingId;
+const mappingId = data.applicationId + '.' + getEventData('event_name');
+const urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=' + mappingId;
 
 let postBodyData = getAllEventData();
 const postBody = JSON.stringify(postBodyData);
@@ -115,6 +118,6 @@ setup: ''
 
 ___NOTES___
 
-Created on 8/18/2021, 2:59:44 PM
+Created on 8/18/2021, 3:11:28 PM
 
 
