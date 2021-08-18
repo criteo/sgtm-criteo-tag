@@ -31,8 +31,8 @@ ___TEMPLATE_PARAMETERS___
 [
   {
     "type": "TEXT",
-    "name": "MappingId",
-    "displayName": "",
+    "name": "mappingId",
+    "displayName": "MappingId",
     "simpleValueType": true
   }
 ]
@@ -115,6 +115,6 @@ setup: ''
 
 ___NOTES___
 
-Created on 8/18/2021, 2:56:49 PM
+Created on 8/18/2021, 2:59:44 PM
 
 
