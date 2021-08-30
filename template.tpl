@@ -34,25 +34,44 @@ ___TEMPLATE_PARAMETERS___
     "name": "applicationId",
     "displayName": "ApplicationId",
     "simpleValueType": true
+  },
+  {
+    "type": "TEXT",
+    "name": "partnerId",
+    "displayName": "Partner ID (ex. 123456)",
+    "simpleValueType": true,
+    "valueValidators": [
+      {
+        "type": "POSITIVE_NUMBER"
+      }
+    ]
   }
 ]
 
 
 ___SANDBOXED_JS_FOR_SERVER___
 
+// Imports
 const sendHttpRequest = require('sendHttpRequest');
 const getAllEventData = require('getAllEventData');
 const getEventData = require('getEventData');
-
 const JSON = require('JSON');
 
+// Constants (do not forget to update the version
+const tagVersion = 'criteo_sgtm_0.0.1';
+
+// Implementation
 const postHeaders = {'Content-Type': 'application/json'};
 const mappingId = data.applicationId + '.' + getEventData('event_name');
 const urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=' + mappingId;
 
-let postBodyData = getAllEventData();
+const postBodyData = getAllEventData();
+postBodyData.partner_id = data.partnerId;
+postBodyData.version = tagVersion;
 const postBody = JSON.stringify(postBodyData);
 
+
+// Fire
 sendHttpRequest(urlToCall, (statusCode, headers, body) => {
   if (statusCode >= 200 && statusCode < 300) {
     data.gtmOnSuccess();
@@ -118,6 +137,6 @@ setup: ''
 
 ___NOTES___
 
-Created on 8/18/2021, 3:11:28 PM
+Created on 30/08/2021, 17:10:47
 
 
