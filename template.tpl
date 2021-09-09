@@ -45,6 +45,12 @@ ___TEMPLATE_PARAMETERS___
         "type": "POSITIVE_NUMBER"
       }
     ]
+  },
+  {
+    "type": "CHECKBOX",
+    "name": "enableDising",
+    "checkboxText": "Enable User Synchronization",
+    "simpleValueType": true
   }
 ]
 
@@ -68,6 +74,7 @@ const urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=' + mappingI
 const postBodyData = getAllEventData();
 postBodyData.partner_id = data.partnerId;
 postBodyData.version = tagVersion;
+postBodyData.enable_dising = data.enableDising;
 const postBody = JSON.stringify(postBodyData);
 
 
@@ -137,6 +144,6 @@ setup: ''
 
 ___NOTES___
 
-Created on 30/08/2021, 17:10:47
+Created on 9/9/2021, 3:11:39 PM
 
 
