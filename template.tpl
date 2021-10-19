@@ -51,6 +51,36 @@ ___TEMPLATE_PARAMETERS___
     "name": "enableDising",
     "checkboxText": "Enable User Synchronization",
     "simpleValueType": true
+  },
+  {
+    "type": "TEXT",
+    "name": "country",
+    "displayName": "Country Name (ex. FR)",
+    "simpleValueType": true,
+    "canBeEmptyString": true,
+    "valueValidators": [
+      {
+        "type": "REGEX",
+        "args": [
+          "^[A-Z]{2}$|^{0}$"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "TEXT",
+    "name": "language",
+    "displayName": "Language (ex. fr)",
+    "simpleValueType": true,
+    "canBeEmptyString": true,
+    "valueValidators": [
+      {
+        "type": "REGEX",
+        "args": [
+          "^[a-z]{2}$|^{0}$"
+        ]
+      }
+    ]
   }
 ]
 
@@ -75,8 +105,10 @@ const postBodyData = getAllEventData();
 postBodyData.partner_id = data.partnerId;
 postBodyData.version = tagVersion;
 postBodyData.enable_dising = data.enableDising;
+postBodyData.an = data.applicationId;
+postBodyData.cn = data.country;
+postBodyData.ln = data.language;
 const postBody = JSON.stringify(postBodyData);
-
 
 // Fire
 sendHttpRequest(urlToCall, (statusCode, headers, body) => {
@@ -144,6 +176,6 @@ setup: ''
 
 ___NOTES___
 
-Created on 9/9/2021, 3:11:39 PM
+Created on 19/10/2021, 16:14:33
 
 
