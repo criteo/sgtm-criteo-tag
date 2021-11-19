@@ -81,6 +81,17 @@ ___TEMPLATE_PARAMETERS___
         ]
       }
     ]
+  },
+  {
+    "type": "TEXT",
+    "name": "callerId",
+    "displayName": "Caller Id",
+    "simpleValueType": true,
+    "valueValidators": [
+      {
+        "type": "NUMBER"
+      }
+    ]
   }
 ]
 
@@ -92,17 +103,24 @@ const sendHttpRequest = require('sendHttpRequest');
 const getAllEventData = require('getAllEventData');
 const getEventData = require('getEventData');
 const JSON = require('JSON');
+const getCookieValues = require('getCookieValues');
+const logToConsole = require('logToConsole');
 
-// Constants (do not forget to update the version
+
+// Constants (do not forget to update the version)
 const tagVersion = 'criteo_sgtm_0.0.1';
+const COOKIE_NAME = "crto_mapped_user_id";
 
 // Implementation
 const postHeaders = {'Content-Type': 'application/json'};
 const mappingId = data.applicationId + '.' + getEventData('event_name');
 const urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=' + mappingId;
+var criteoMappedUserId = getCookieValues(COOKIE_NAME)[0];
 
 const postBodyData = getAllEventData();
 postBodyData.partner_id = data.partnerId;
+postBodyData.mapping_key = data.callerId;
+postBodyData.mapped_user_id = criteoMappedUserId;
 postBodyData.version = tagVersion;
 postBodyData.enable_dising = data.enableDising;
 postBodyData.an = data.applicationId;
@@ -164,6 +182,57 @@ ___SERVER_PERMISSIONS___
       "isEditedByUser": true
     },
     "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "get_cookies",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "cookieAccess",
+          "value": {
+            "type": 1,
+            "string": "specific"
+          }
+        },
+        {
+          "key": "cookieNames",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 1,
+                "string": "crto_mapped_user_id"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "logging",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "environments",
+          "value": {
+            "type": 1,
+            "string": "debug"
+          }
+        }
+      ]
+    },
+    "isRequired": true
   }
 ]
 
@@ -176,6 +245,6 @@ setup: ''
 
 ___NOTES___
 
-Created on 19/10/2021, 16:14:33
+Created on 11/19/2021, 9:55:06 AM
 
 
