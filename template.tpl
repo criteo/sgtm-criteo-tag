@@ -141,13 +141,24 @@ if (isUserOptOut === "true") {
 const postBody = JSON.stringify(postBodyData);
 
 // Fire
-sendHttpRequest(urlToCall, (statusCode, headers, body) => {
-  if (statusCode >= 200 && statusCode < 300) {
-    data.gtmOnSuccess();
-  } else {
-    data.gtmOnFailure();
-  }
-}, {headers: postHeaders, method: 'POST', timeout: 3000}, postBody);
+callWidget(urlToCall, 0);
+
+function callWidget(widgetUrl, redirectLvl) {
+    if (redirectLvl > 5) {
+      logToConsole("Invalid Redirect Loop");
+      data.gtmOnFailure();
+      return;
+    }
+    sendHttpRequest(widgetUrl, (statusCode, headers, body) => {
+    if (statusCode >= 200 && statusCode < 300) {
+      data.gtmOnSuccess();
+    } else if (statusCode >= 300 && statusCode < 400){
+      callWidget(headers.location, redirectLvl + 1);
+    } else {
+      data.gtmOnFailure();
+    }
+  }, {headers: postHeaders, method: 'POST', timeout: 3000}, postBody);
+}
 
 
 ___SERVER_PERMISSIONS___
@@ -195,7 +206,7 @@ ___SERVER_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://sslwidget.criteo.com/*"
+                "string": "https://*.criteo.com/*"
               }
             ]
           }
@@ -260,6 +271,9 @@ ___SERVER_PERMISSIONS___
         }
       ]
     },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
     "isRequired": true
   }
 ]
@@ -267,12 +281,12 @@ ___SERVER_PERMISSIONS___
 
 ___TESTS___
 
-scenarios: []
+scenarios:
+- name: Quick Test
+  code: runCode();
 setup: ''
 
 
 ___NOTES___
 
-Created on 18/01/2022, 15:37:01
-
-
+Created on 19/01/2022, 17:33:51
