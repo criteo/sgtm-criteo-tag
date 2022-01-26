@@ -1,7 +1,14 @@
 # Server-side Google Tag Manager Criteo Tag
 
-SGTM Criteo Tag based on the example community template.
+This Tag sends the web events for which it is triggered on the Google server-container, directly to Criteo servers.
+No formatting is done on the events, as everything is done on Criteo Side, it simply forwards the events it receives, while adding some fields.
 
-The example-community-template project is an example of a Google Tag Manager [Community Template Gallery template repository](https://support.google.com/tagmanager/answer/9454109) repository that can be used as a template to generate new community template repositories.
+# Installation
 
-To submit your own template, see the [detailed instructions on how to submit templates to the Community Template Gallery](https://developers.google.com/tag-manager/templates/gallery).
+> :warning: **If you want User Identification to work optimally**: please also install [Criteo User Identification](https://github.com/criteo/gtm-criteo-useridentification/) on your Google Tag Manager web-container!
+
+Please get in touch with your Criteo Account Strategist to fill the following parameters: 
+
+* applicationId (which is used to identify and properly format your event in Criteo format on our end, recommended format for this field is **com.advertiserName.sgtm**
+* partnerId
+* callerId (which is used for User Identification)

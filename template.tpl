@@ -14,6 +14,7 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Criteo Tag",
+  "categories": ["ADVERTISING"],
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
@@ -289,4 +290,4 @@ setup: ''
 
 ___NOTES___
 
-Created on 19/01/2022, 17:33:51
+Created on 25/01/2022, 16:05:52
