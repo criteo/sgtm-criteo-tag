@@ -14,7 +14,6 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Criteo Tag",
-  "categories": ["ADVERTISING"],
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
@@ -283,11 +282,55 @@ ___SERVER_PERMISSIONS___
 ___TESTS___
 
 scenarios:
-- name: Quick Test
-  code: runCode();
-setup: ''
+- name: on Event received, call Criteo endpoint with proper data
+  code: |2-
+
+    // Call runCode to run the template's code.
+    runCode(mockConfiguration);
+
+    // Verify that the tag finished successfully.
+    assertApi('sendHttpRequest').wasCalledWith(urlToCall, actualSuccessCallback, headers, JSON.stringify(expectedData));
+    assertApi('gtmOnSuccess').wasCalled();
+- name: on Opted Out User, Criteo is called with anonymised Data
+  code: "mock('getCookieValues', (cookieName) => {\n      if(cookieName === 'crto_mapped_user_id')\
+    \ return ['mapped_user_id'];\n      if(cookieName === 'crto_is_user_optout') return\
+    \ ['true'];\n});\n\nconst expectedAnonymisedData = {\n    \"language\": \"fr\"\
+    ,\n    \"client_id\": null,\n    \"user_id\": null,\n    \"event_name\": \"page_view\"\
+    ,\n    \"engagement_time_msec\": 1,\n    \"email\": null,\n    \"ip_override\"\
+    : null,\n    \"user_agent\": \"ua\",\n    \"partner_id\": \"1234\",\n    \"mapping_key\"\
+    : null,\n    \"mapped_user_id\": null,\n    \"version\":\"criteo_sgtm_0.0.1\"\
+    ,\n    \"enable_dising\":\"true\",\n    \"an\":\"com.test.sgtm\",\n    \"cn\"\
+    :\"FR\",\n    \"ln\":\"fr\" \n};\n\n// Call runCode to run the template's code.\n\
+    runCode(mockConfiguration);\n\n// Verify that the tag finished successfully.\n\
+    assertApi('sendHttpRequest').wasCalledWith(urlToCall, actualSuccessCallback, headers,\
+    \ JSON.stringify(expectedAnonymisedData));\nassertApi('gtmOnSuccess').wasCalled();"
+setup: "const JSON = require('JSON');\nconst logToConsole = require('logToConsole');\n\
+  \nconst urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=com.test.sgtm.page_view';\n\
+  const postHeaders = {'Content-Type': 'application/json'};\nconst headers = {headers:\
+  \ postHeaders, method: 'POST', timeout: 3000};\n\nconst mockData = {\n    \"language\"\
+  : \"fr\",\n    \"client_id\": \"fake_client_id\",\n    \"user_id\": \"FPID_123\"\
+  ,\n    \"event_name\": \"page_view\",\n    \"engagement_time_msec\": 1,\n    \"\
+  email\": \"email@example.com\",\n    \"ip_override\": \"fake_ip\",\n    \"user_agent\"\
+  : \"ua\",\n};\n\nconst expectedData = {\n    \"language\": \"fr\",\n    \"client_id\"\
+  : \"fake_client_id\",\n    \"user_id\": \"FPID_123\",\n    \"event_name\": \"page_view\"\
+  ,\n    \"engagement_time_msec\": 1,\n    \"email\": \"email@example.com\",\n   \
+  \ \"ip_override\": \"fake_ip\",\n    \"user_agent\": \"ua\",\n    \"partner_id\"\
+  : \"1234\",\n    \"mapping_key\": \"123\",\n    \"mapped_user_id\": \"mapped_user_id\"\
+  ,\n    \"version\":\"criteo_sgtm_0.0.1\",\n    \"enable_dising\":\"true\",\n   \
+  \ \"an\":\"com.test.sgtm\",\n    \"cn\":\"FR\",\n    \"ln\":\"fr\" \n};\n\n\nconst\
+  \ mockConfiguration = {\n    applicationId: 'com.test.sgtm',\n    partnerId: '1234',\n\
+  \    enableDising: 'true',\n    country: 'FR',\n    language: 'fr',\n    callerId:\
+  \ '123'\n  };\n\n\nmock('getAllEventData', () => {\n    return mockData;\n});\n\n\
+  mock('getEventData', (fieldName) => {\n  if(fieldName === 'event_name') return 'page_view';\n\
+  });\n\nmock('getCookieValues', (cookieName) => {\n      if(cookieName === 'crto_mapped_user_id')\
+  \ return ['mapped_user_id'];\n      if(cookieName === 'crto_is_user_optout') return\
+  \ ['false'];\n});\n\nlet actualSuccessCallback, httpBody;\nmock('sendHttpRequest',\
+  \ (postUrl, response, options, body) => {\n  actualSuccessCallback = response;\n\
+  \  httpBody = body;\n  actualSuccessCallback(200, {}, '');\n});"
 
 
 ___NOTES___
 
-Created on 25/01/2022, 16:05:52
+Created on 31/01/2022, 10:35:47
+
+
