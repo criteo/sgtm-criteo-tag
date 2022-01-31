@@ -304,8 +304,7 @@ scenarios:
     runCode(mockConfiguration);\n\n// Verify that the tag finished successfully.\n\
     assertApi('sendHttpRequest').wasCalledWith(urlToCall, actualSuccessCallback, headers,\
     \ JSON.stringify(expectedAnonymisedData));\nassertApi('gtmOnSuccess').wasCalled();"
-setup: "const JSON = require('JSON');\nconst logToConsole = require('logToConsole');\n\
-  \nconst urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=com.test.sgtm.page_view';\n\
+setup: "const JSON = require('JSON');\n\nconst urlToCall = 'https://sslwidget.criteo.com/gtm/event?mappingId=com.test.sgtm.page_view';\n\
   const postHeaders = {'Content-Type': 'application/json'};\nconst headers = {headers:\
   \ postHeaders, method: 'POST', timeout: 3000};\n\nconst mockData = {\n    \"language\"\
   : \"fr\",\n    \"client_id\": \"fake_client_id\",\n    \"user_id\": \"FPID_123\"\
@@ -317,10 +316,10 @@ setup: "const JSON = require('JSON');\nconst logToConsole = require('logToConsol
   \ \"ip_override\": \"fake_ip\",\n    \"user_agent\": \"ua\",\n    \"partner_id\"\
   : \"1234\",\n    \"mapping_key\": \"123\",\n    \"mapped_user_id\": \"mapped_user_id\"\
   ,\n    \"version\":\"criteo_sgtm_0.0.1\",\n    \"enable_dising\":\"true\",\n   \
-  \ \"an\":\"com.test.sgtm\",\n    \"cn\":\"FR\",\n    \"ln\":\"fr\" \n};\n\n\nconst\
+  \ \"an\":\"com.test.sgtm\",\n    \"cn\":\"FR\",\n    \"ln\":\"fr\" \n};\n\nconst\
   \ mockConfiguration = {\n    applicationId: 'com.test.sgtm',\n    partnerId: '1234',\n\
   \    enableDising: 'true',\n    country: 'FR',\n    language: 'fr',\n    callerId:\
-  \ '123'\n  };\n\n\nmock('getAllEventData', () => {\n    return mockData;\n});\n\n\
+  \ '123'\n};\n\n\nmock('getAllEventData', () => {\n    return mockData;\n});\n\n\
   mock('getEventData', (fieldName) => {\n  if(fieldName === 'event_name') return 'page_view';\n\
   });\n\nmock('getCookieValues', (cookieName) => {\n      if(cookieName === 'crto_mapped_user_id')\
   \ return ['mapped_user_id'];\n      if(cookieName === 'crto_is_user_optout') return\
@@ -331,6 +330,4 @@ setup: "const JSON = require('JSON');\nconst logToConsole = require('logToConsol
 
 ___NOTES___
 
-Created on 31/01/2022, 10:35:47
-
-
+Created on 31/01/2022, 10:59:56
