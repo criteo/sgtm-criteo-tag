@@ -15,5 +15,9 @@
 homepage: "https://www.criteo.com"
 documentation: "https://github.com/criteo/sgtm-criteo-tag/blob/main/README.md"
 versions:
+  # Latest version
+  - sha: 32f0a9d91174ca0f242ff4b72e59a42b6aaf71ce
+    changeNotes: Updated tag's description and name
+  # Older versions
   - sha: 29ae45481b218606d9f299d53a4c282a5a6c74d7
     changeNotes: Initial Version
