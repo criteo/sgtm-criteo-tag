@@ -92,6 +92,12 @@ ___TEMPLATE_PARAMETERS___
         "type": "NUMBER"
       }
     ]
+  },
+  {
+    "type": "TEXT",
+    "name": "full_url",
+    "displayName": "Full url (referrer)",
+    "simpleValueType": true
   }
 ]
 
@@ -128,6 +134,7 @@ postBodyData.enable_dising = data.enableDising;
 postBodyData.an = data.applicationId;
 postBodyData.cn = data.country;
 postBodyData.ln = data.language;
+postBodyData.full_url = data.full_url;
 
 if (isUserOptOut === "true") {
   postBodyData.email = null;
